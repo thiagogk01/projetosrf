@@ -73,6 +73,7 @@
             line-height: 1.7;
             transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
+            width: 100%;
         }
 
         h1, h2, h3, h4, .navbar-brand {
@@ -84,9 +85,9 @@
             font-family: 'Lora', serif;
         }
 
-        /* Navbar */
+        /* Navbar Responsiva */
         .navbar {
-            background: rgba(11, 17, 32, 0.94);
+            background: rgba(11, 17, 32, 0.96);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(234, 179, 8, 0.22);
         }
@@ -98,24 +99,33 @@
             font-weight: 600;
         }
 
-        /* Hero Section */
+        /* Hero Section Fluida */
         .hero-section {
             background: linear-gradient(135deg, #070c18 0%, #112244 55%, #193261 100%);
             color: #ffffff;
-            padding: 6.5rem 0 5rem;
+            padding: 5.5rem 0 3.5rem;
             position: relative;
+            overflow: hidden;
             border-bottom: 1px solid rgba(234, 179, 8, 0.18);
-            border-bottom-left-radius: 2.5rem;
-            border-bottom-right-radius: 2.5rem;
+            border-bottom-left-radius: 1.75rem;
+            border-bottom-right-radius: 1.75rem;
             box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.55);
+        }
+
+        @media (min-width: 768px) {
+            .hero-section {
+                padding: 6.75rem 0 5rem;
+                border-bottom-left-radius: 2.5rem;
+                border-bottom-right-radius: 2.5rem;
+            }
         }
 
         .hero-glow {
             position: absolute;
             top: -80px;
             right: -80px;
-            width: 340px;
-            height: 340px;
+            width: 260px;
+            height: 260px;
             background: radial-gradient(circle, rgba(234, 179, 8, 0.2) 0%, rgba(234, 179, 8, 0) 70%);
             border-radius: 50%;
             pointer-events: none;
@@ -125,9 +135,15 @@
         .custom-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 1.5rem;
+            border-radius: 1.25rem;
             box-shadow: 0 12px 32px -6px rgba(0, 0, 0, 0.35);
             transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .custom-card {
+                border-radius: 1.5rem;
+            }
         }
 
         .custom-card:hover {
@@ -137,16 +153,23 @@
 
         .scripture-box {
             background: linear-gradient(to right, var(--accent-gold-soft), var(--scripture-box-end));
-            border-left: 5px solid var(--accent-gold);
-            border-radius: 1rem;
-            padding: 1.5rem;
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 0.9rem;
+            padding: 1.15rem;
             position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .scripture-box {
+                border-left-width: 5px;
+                padding: 1.5rem;
+            }
         }
 
         .scripture-text {
             font-family: 'Lora', serif;
             font-style: italic;
-            font-size: 1.32rem;
+            font-size: clamp(1.1rem, 3.5vw, 1.32rem);
             color: var(--scripture-quote);
             font-weight: 600;
             line-height: 1.6;
@@ -196,8 +219,8 @@
         /* Accordion / Roteiro de Pregação */
         .accordion-item {
             border: 1px solid var(--card-border) !important;
-            border-radius: 1.15rem !important;
-            margin-bottom: 1rem;
+            border-radius: 1rem !important;
+            margin-bottom: 0.85rem;
             overflow: hidden;
             background-color: var(--accordion-bg);
         }
@@ -206,83 +229,37 @@
             font-weight: 700;
             color: var(--text-dark);
             background-color: var(--accordion-bg);
-            padding: 1.2rem 1.4rem;
+            padding: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.45;
         }
 
-        .accordion-button:not(.collapsed) {
-            background-color: var(--accordion-active-bg);
-            color: #fde047;
-            box-shadow: none;
+        @media (min-width: 768px) {
+            .accordion-button {
+                padding: 1.2rem 1.4rem;
+                font-size: 1.02rem;
+            }
         }
-
-        [data-bs-theme="light"] .accordion-button:not(.collapsed) {
-            color: #14284b;
-        }
-
-        .accordion-button:focus {
-            box-shadow: none;
-            border-color: rgba(234, 179, 8, 0.5);
-        }
-
-        .script-quote-box {
-            background-color: rgba(15, 23, 42, 0.55);
-            color: #e2e8f0;
-        }
-
-        [data-bs-theme="light"] .script-quote-box {
-            background-color: #f8fafc;
-            color: #334155;
-        }
-
         .step-badge {
-            width: 34px;
-            height: 34px;
+            width: 30px;
+            height: 30px;
             background-color: var(--step-badge-bg);
             color: #ffffff;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            margin-right: 12px;
+            margin-right: 10px;
             flex-shrink: 0;
         }
 
-        /* Mural de Compromissos */
-        .pledge-card {
-            background: var(--pledge-bg);
-            border: 1px solid rgba(234, 179, 8, 0.25);
-            border-radius: 1.1rem;
-            padding: 1.15rem;
-            position: relative;
-            animation: fadeInUp 0.4s ease;
-        }
-
-        #pledgeForm .form-control {
-            background-color: var(--input-bg);
-            border-color: var(--card-border);
-            color: var(--text-dark);
-        }
-
-        #pledgeForm .form-control:focus {
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 0 0.2rem rgba(234, 179, 8, 0.2);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
+        /* Utilitário responsivo para botões full-width apenas no mobile (<576px) */
+        @media (min-width: 576px) {
+            .w-sm-auto {
+                width: auto !important;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .toast-container {
-            z-index: 1080;
         }
 
         .prayer-card {
@@ -308,12 +285,12 @@
         }
 
         body.reading-mode .scripture-text {
-            font-size: 1.55rem;
+            font-size: clamp(1.28rem, 4.2vw, 1.55rem);
             line-height: 1.75;
         }
 
         body.reading-mode .reflection-text {
-            font-size: 1.2rem;
+            font-size: clamp(1.08rem, 3.4vw, 1.2rem);
             line-height: 1.85;
             color: var(--reading-text) !important;
         }
@@ -326,33 +303,33 @@
 </head>
 <body>
 
-    <!-- Barra de Navegação Fixa -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-                <i class="bi bi-compass-fill text-warning fs-4"></i>
-                <span>9º Ano no NR • <span class="fw-normal text-white-50">Partilha & Fé</span></span>
+    <!-- Barra de Navegação Fixa Responsiva -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-2 py-md-3">
+        <div class="container px-3 px-md-4">
+            <a class="navbar-brand d-flex align-items-center gap-2 fs-6 fs-sm-5 text-truncate" href="#" style="max-width: 52vw;">
+                <i class="bi bi-compass-fill text-warning fs-5 flex-shrink-0"></i>
+                <span class="text-truncate">9º Ano • <span class="fw-normal text-white-50">NR</span></span>
             </a>
             
-            <div class="d-flex align-items-center gap-2 order-lg-3">
-                <button id="readingModeBtn" class="btn btn-sm btn-outline-warning rounded-pill px-3 py-2 d-flex align-items-center gap-2" title="Amplia as letras e abre todas as etapas do roteiro para ler no celular">
+            <div class="d-flex align-items-center gap-1 gap-sm-2 order-lg-3">
+                <button id="readingModeBtn" class="btn btn-sm btn-outline-warning rounded-pill px-2 px-sm-3 py-1 py-sm-2 d-flex align-items-center gap-1 gap-sm-2" title="Amplia as letras e abre todas as etapas do roteiro para ler no celular">
                     <i class="bi bi-book"></i>
-                    <span>Modo de Leitura</span>
+                    <span class="small fw-semibold">Modo de Leitura</span>
                 </button>
-                <button id="themeToggleBtn" class="btn btn-sm btn-outline-light rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;" title="Alternar entre Modo Escuro e Modo Claro" aria-label="Alternar tema">
+                <button id="themeToggleBtn" class="btn btn-sm btn-outline-light rounded-circle p-0 d-flex align-items-center justify-content-center flex-shrink-0" style="width: 34px; height: 34px;" title="Alternar entre Modo Escuro e Modo Claro" aria-label="Alternar tema">
                     <i class="bi bi-sun-fill text-warning"></i>
                 </button>
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <button class="navbar-toggler border-0 p-1 ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
 
             <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
-                <ul class="navbar-nav ms-auto me-lg-3 gap-lg-3 mt-3 mt-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#passagens">As Passagens</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#roteiro">Roteiro da Partilha</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#oracao">Oração Final</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#mural">Mural da Turma</a></li>
+                <ul class="navbar-nav ms-auto me-lg-3 gap-1 gap-lg-3 pt-3 pb-2 py-lg-0 border-top border-secondary border-opacity-25 border-lg-0 mt-2 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link py-2 px-2 rounded-3" href="#passagens">As Passagens</a></li>
+                    <li class="nav-item"><a class="nav-link py-2 px-2 rounded-3" href="#roteiro">Roteiro da Partilha</a></li>
+                    <li class="nav-item"><a class="nav-link py-2 px-2 rounded-3" href="#oracao">Oração Final</a></li>
+                    <li class="nav-item"><a class="nav-link py-2 px-2 rounded-3" href="#mural">Mural da Turma</a></li>
                 </ul>
             </div>
         </div>
@@ -361,39 +338,39 @@
     <!-- Hero Section -->
     <header class="hero-section">
         <div class="hero-glow"></div>
-        <div class="container position-relative">
+        <div class="container px-3 px-md-4 position-relative">
             <div class="row align-items-center g-4">
-                <div class="col-lg-8">
-                    <span class="badge badge-gold rounded-pill px-3 py-2 mb-3">
+                <div class="col-12 col-lg-8">
+                    <span class="badge badge-gold rounded-pill px-3 py-2 mb-3 text-wrap text-start lh-sm">
                         <i class="bi bi-stars me-1"></i> Viagem de Formatura • Encerramento do Ensino Fundamental
                     </span>
                     <h1 class="display-5 fw-extrabold mb-3">
                         Mais do que uma despedida: uma aliança que fica para a vida inteira.
                     </h1>
-                    <p class="lead text-white-50 mb-4">
+                    <p class="lead fs-6 fs-md-5 text-white-50 mb-4">
                         Estamos no NR celebrando o fim do 9º ano. Para muitos, este é o último ano na mesma escola — mas para Deus, nenhuma amizade verdadeira tem prazo de validade quando somos unidos num só coração.
                     </p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="#passagens" class="btn btn-gold btn-lg shadow-sm">
+                    <div class="d-flex flex-column flex-sm-row gap-2 gap-sm-3">
+                        <a href="#passagens" class="btn btn-gold btn-lg w-100 w-sm-auto shadow-sm">
                             <i class="bi bi-book-half me-2"></i>Ler Reflexões Bíblicas
                         </a>
-                        <a href="#roteiro" class="btn btn-outline-light btn-lg rounded-4">
-                            <i class="bi bi-mic-fill me-2"></i>Ver Roteiro Pronto para Falar
+                        <a href="#roteiro" class="btn btn-outline-light btn-lg w-100 w-sm-auto rounded-4">
+                            <i class="bi bi-mic-fill me-2"></i>Ver Roteiro Pronto
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="bg-white bg-opacity-10 border border-white border-opacity-25 rounded-4 p-4">
+                <div class="col-12 col-lg-4">
+                    <div class="bg-white bg-opacity-10 border border-white border-opacity-25 rounded-4 p-3 p-sm-4">
                         <div class="d-flex align-items-center gap-3 mb-3">
-                            <div class="bg-warning text-dark rounded-3 p-2 px-3 fw-bold">
+                            <div class="bg-warning text-dark rounded-3 p-2 px-3 fw-bold flex-shrink-0">
                                 <i class="bi bi-lightbulb-fill fs-5"></i>
                             </div>
-                            <h5 class="mb-0 text-white">Guia Rápido da Partilha</h5>
+                            <h5 class="mb-0 text-white fs-6 fs-sm-5">Guia Rápido da Partilha</h5>
                         </div>
                         <ul class="list-unstyled text-white-50 small mb-0 d-flex flex-column gap-2">
-                            <li><i class="bi bi-check-circle-fill text-warning me-2"></i>Textos fiéis à <strong class="text-white">Bíblia Católica (Ave Maria)</strong></li>
-                            <li><i class="bi bi-check-circle-fill text-warning me-2"></i>Linguagem jovem, sincera e acolhedora</li>
-                            <li><i class="bi bi-check-circle-fill text-warning me-2"></i>Roteiro prático, dinâmica em grupo e mural para a turma</li>
+                            <li class="d-flex align-items-start gap-2"><i class="bi bi-check-circle-fill text-warning mt-1 flex-shrink-0"></i><span>Textos fiéis à <strong class="text-white">Bíblia Católica (Ave Maria)</strong></span></li>
+                            <li class="d-flex align-items-start gap-2"><i class="bi bi-check-circle-fill text-warning mt-1 flex-shrink-0"></i><span>Linguagem jovem, sincera e acolhedora</span></li>
+                            <li class="d-flex align-items-start gap-2"><i class="bi bi-check-circle-fill text-warning mt-1 flex-shrink-0"></i><span>Roteiro prático, dinâmica em grupo e mural para a turma</span></li>
                         </ul>
                     </div>
                 </div>
@@ -402,26 +379,26 @@
     </header>
 
     <!-- Seção Principal: As Duas Passagens Bíblicas e Reflexões -->
-    <main class="container my-5 pt-3">
+    <main class="container px-3 px-md-4 my-4 my-md-5 pt-2 pt-md-3">
         
         <section id="passagens" class="mb-5">
-            <div class="text-center max-w-75 mx-auto mb-5">
+            <div class="text-center mx-auto mb-4 mb-md-5 px-2">
                 <span class="text-uppercase fw-bold small" style="color: var(--accent-gold); letter-spacing: 0.1em;">A Palavra de Deus para Nós</span>
                 <h2 class="h1 mt-1" style="color: var(--primary-navy);">Duas Chaves para Viver o Fim do 9º Ano</h2>
-                <p class="mx-auto" style="max-width: 680px; color: var(--text-muted);">
+                <p class="mx-auto mb-0" style="max-width: 680px; color: var(--text-muted);">
                     Cada passagem ilumina um lado especial desse momento: a alegria de estarmos juntos aqui e agora no NR, e o chamado para não deixarmos divisões ou a distância apagarem nossa história.
                 </p>
             </div>
 
-            <div class="row g-4">
+            <div class="row g-3 g-md-4">
                 <!-- Card 1: Salmos 132:1 -->
-                <div class="col-lg-6">
-                    <div class="custom-card h-100 p-4 p-md-5 d-flex flex-column">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="badge rounded-pill px-3 py-2" style="background-color: rgba(59, 130, 246, 0.18); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.3);">
+                <div class="col-12 col-lg-6">
+                    <div class="custom-card h-100 p-3 p-sm-4 p-md-5 d-flex flex-column">
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2 mb-3">
+                            <span class="badge rounded-pill px-3 py-2 text-wrap text-start lh-sm" style="background-color: rgba(59, 130, 246, 0.18); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.3);">
                                 <i class="bi bi-bookmark-heart-fill me-1"></i> 1ª Passagem • A Alegria do Encontro
                             </span>
-                            <button class="btn btn-sm btn-outline-secondary rounded-3 copy-btn" data-copy="Salmos 132,1 (Bíblia Ave Maria): &quot;Oh! Como é bom, como é agradável para irmãos unidos viverem juntos!&quot;">
+                            <button class="btn btn-sm btn-outline-secondary rounded-3 copy-btn align-self-end align-self-sm-auto flex-shrink-0" data-copy="Salmos 132,1 (Bíblia Ave Maria): &quot;Oh! Como é bom, como é agradável para irmãos unidos viverem juntos!&quot;">
                                 <i class="bi bi-clipboard me-1"></i> Copiar
                             </button>
                         </div>
@@ -429,14 +406,14 @@
                         <h3 class="h4 mb-3" style="color: var(--primary-navy);">Salmos 132, 1</h3>
 
                         <div class="scripture-box mb-4">
-                            <p class="scripture-text mb-1">
+                            <p class="scripture-text mb-1 text-break">
                                 “Oh! Como é bom, como é agradável para irmãos unidos viverem juntos!”
                             </p>
                             <small style="color: var(--text-muted);" class="fw-semibold">— Bíblia Sagrada (Edição Ave Maria)</small>
                         </div>
 
                         <div class="reflection-text flex-grow-1" style="color: var(--text-muted);">
-                            <h5 class="fw-bold mb-2" style="color: var(--text-dark);">O que isso fala para a nossa turma hoje?</h5>
+                            <h5 class="fw-bold mb-2 fs-6 fs-md-5" style="color: var(--text-dark);">O que isso fala para a nossa turma hoje?</h5>
                             <p>
                                 Olhem ao redor neste acampamento. Durante anos, a gente dividiu a mesma sala, as mesmas provas difíceis, as risadas no intervalo e até os estresses do dia a dia. Muitas vezes, na correria da escola, a gente entra no piloto automático e esquece de agradecer pelas pessoas que caminham do nosso lado.
                             </p>
@@ -453,13 +430,13 @@
                 </div>
 
                 <!-- Card 2: 1 Coríntios 1:10 -->
-                <div class="col-lg-6">
-                    <div class="custom-card h-100 p-4 p-md-5 d-flex flex-column">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="badge rounded-pill px-3 py-2" style="background-color: rgba(234, 179, 8, 0.16); color: #fde047; border: 1px solid rgba(234, 179, 8, 0.32);">
+                <div class="col-12 col-lg-6">
+                    <div class="custom-card h-100 p-3 p-sm-4 p-md-5 d-flex flex-column">
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2 mb-3">
+                            <span class="badge rounded-pill px-3 py-2 text-wrap text-start lh-sm" style="background-color: rgba(234, 179, 8, 0.16); color: #fde047; border: 1px solid rgba(234, 179, 8, 0.32);">
                                 <i class="bi bi-people-fill me-1"></i> 2ª Passagem • Superar Divisões e Seguir Unidos
                             </span>
-                            <button class="btn btn-sm btn-outline-secondary rounded-3 copy-btn" data-copy="1 Coríntios 1,10 (Bíblia Ave Maria): &quot;Rogo-vos, irmãos, em nome de nosso Senhor Jesus Cristo, que todos estejais em pleno acordo, e que não haja entre vós divisões; mas sede perfeitamente unidos, num mesmo espírito e num mesmo parecer.&quot;">
+                            <button class="btn btn-sm btn-outline-secondary rounded-3 copy-btn align-self-end align-self-sm-auto flex-shrink-0" data-copy="1 Coríntios 1,10 (Bíblia Ave Maria): &quot;Rogo-vos, irmãos, em nome de nosso Senhor Jesus Cristo, que todos estejais em pleno acordo, e que não haja entre vós divisões; mas sede perfeitamente unidos, num mesmo espírito e num mesmo parecer.&quot;">
                                 <i class="bi bi-clipboard me-1"></i> Copiar
                             </button>
                         </div>
@@ -467,14 +444,14 @@
                         <h3 class="h4 mb-3" style="color: var(--primary-navy);">1 Coríntios 1, 10</h3>
 
                         <div class="scripture-box mb-4">
-                            <p class="scripture-text mb-1">
+                            <p class="scripture-text mb-1 text-break">
                                 “Rogo-vos, irmãos, em nome de nosso Senhor Jesus Cristo, que todos estejais em pleno acordo, e que não haja entre vós divisões; mas sede perfeitamente unidos, num mesmo espírito e num mesmo parecer.”
                             </p>
                             <small style="color: var(--text-muted);" class="fw-semibold">— Bíblia Sagrada (Edição Ave Maria)</small>
                         </div>
 
                         <div class="reflection-text flex-grow-1" style="color: var(--text-muted);">
-                            <h5 class="fw-bold mb-2" style="color: var(--text-dark);">Como vencer as divisões antes do Ensino Médio?</h5>
+                            <h5 class="fw-bold mb-2 fs-6 fs-md-5" style="color: var(--text-dark);">Como vencer as divisões antes do Ensino Médio?</h5>
                             <p>
                                 São Paulo escreveu essa carta para uma comunidade onde cada um queria puxar para um lado, criando grupinhos fechados e mágoas bobas. No 9º ano, a gente sabe que isso também acontece: fofocas, mal-entendidos ou gente que mal se fala mesmo estudando na mesma sala há anos.
                             </p>
@@ -493,17 +470,17 @@
         </section>
 
         <!-- Seção 2: Roteiro Interativo Pronto para a Pregação -->
-        <section id="roteiro" class="mb-5 pt-4">
-            <div class="custom-card p-4 p-md-5">
-                <div class="row align-items-center mb-4">
-                    <div class="col-md-8">
+        <section id="roteiro" class="mb-5 pt-2 pt-md-4">
+            <div class="custom-card p-3 p-sm-4 p-md-5">
+                <div class="row align-items-center g-3 mb-4">
+                    <div class="col-12 col-md-8">
                         <span class="text-uppercase fw-bold small" style="color: var(--accent-gold); letter-spacing: 0.1em;">Passo a Passo para Falar</span>
                         <h2 class="h2 mt-1 mb-2" style="color: var(--primary-navy);">Roteiro Completo da Sua Pregação (8 a 12 min)</h2>
                         <p class="mb-0" style="color: var(--text-muted);">
                             Abra cada etapa na hora em que for falar com a turma. Você pode ler diretamente ou usar como guia para falar com suas próprias palavras.
                         </p>
                     </div>
-                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <div class="col-12 col-md-4 text-md-end">
                         <span class="badge bg-dark text-light border border-secondary px-3 py-2 rounded-3">
                             <i class="bi bi-clock me-1 text-warning"></i> Tempo ideal: ~10 minutos
                         </span>
@@ -580,7 +557,7 @@
                         <div id="step4" class="accordion-collapse collapse" data-bs-parent="#preachingAccordion">
                             <div class="accordion-body reflection-text" style="color: var(--text-muted);">
                                 <p class="fw-semibold" style="color: var(--text-dark);">Como conduzir com a turma (muito simples e marcante):</p>
-                                <ol class="mb-0">
+                                <ol class="ps-3 mb-0">
                                     <li class="mb-2">Peça para todos ficarem de pé e formarem um único círculo, colocando a mão no ombro do colega da direita e da esquerda.</li>
                                     <li class="mb-2">Diga: <em style="color: var(--text-dark);">“Olhem para esse círculo. Não tem começo nem fim, e ninguém está de fora. É assim que Deus vê a nossa turma.”</em></li>
                                     <li>Peça para cada um olhar para duas pessoas no círculo e fazer um gesto de paz ou um sorriso sincero antes de rezarem juntos a Oração Final abaixo.</li>
@@ -593,12 +570,12 @@
         </section>
 
         <!-- Seção 3: Oração Final + Mural Interativo de Compromissos -->
-        <div class="row g-4 mb-5">
+        <div class="row g-3 g-md-4 mb-5">
             <!-- Oração Final -->
-            <div class="col-lg-5" id="oracao">
-                <div class="prayer-card h-100 p-4 p-md-5 d-flex flex-column justify-content-between shadow">
+            <div class="col-12 col-lg-5" id="oracao">
+                <div class="prayer-card h-100 p-3 p-sm-4 p-md-5 d-flex flex-column justify-content-between shadow">
                     <div>
-                        <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
                             <span class="badge badge-gold rounded-pill px-3 py-2">
                                 <i class="bi bi-hands-praying me-1"></i> Encerramento
                             </span>
@@ -608,7 +585,7 @@
                         </div>
 
                         <h3 class="h3 mb-3 text-white">Oração de Encerramento da Turma</h3>
-                        <p class="scripture-font text-light opacity-75 fst-italic" style="font-size: 1.12rem; line-height: 1.8;">
+                        <p class="scripture-font text-light opacity-75 fst-italic" style="font-size: clamp(1rem, 3.2vw, 1.12rem); line-height: 1.8;">
                             “Senhor Jesus, muito obrigado por cada pessoa que faz parte da nossa história neste 9º ano. Obrigado por esta viagem ao NR e por todas as risadas, aprendizados e desafios que vivemos juntos.
                             <br><br>
                             Como diz a Tua Palavra, como é bom e agradável vivermos unidos como irmãos! Pedimos perdão por todas as vezes em que deixamos o orgulho, as fofocas ou as divisões nos afastarem.
@@ -624,15 +601,15 @@
             </div>
 
             <!-- Mural Interativo da Turma -->
-            <div class="col-lg-7" id="mural">
-                <div class="custom-card h-100 p-4 p-md-5">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <div class="col-12 col-lg-7" id="mural">
+                <div class="custom-card h-100 p-3 p-sm-4 p-md-5">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2 mb-3">
                         <div>
                             <span class="text-uppercase fw-bold small" style="color: var(--accent-gold); letter-spacing: 0.1em;">Interação com a Turma</span>
                             <h3 class="h3 mb-0" style="color: var(--primary-navy);">Mural de Compromissos e Intenções</h3>
                         </div>
-                        <button id="inspireBtn" class="btn btn-sm btn-outline-info rounded-3">
-                            <i class="bi bi-magic me-1"></i> Gerar Ideia de Compromisso
+                        <button id="inspireBtn" class="btn btn-sm btn-outline-info rounded-3 w-100 w-sm-auto flex-shrink-0">
+                            <i class="bi bi-magic me-1"></i> Gerar Ideia
                         </button>
                     </div>
                     <p class="small mb-4" style="color: var(--text-muted);">
@@ -641,15 +618,16 @@
 
                     <!-- Formulário para adicionar intenção -->
                     <form id="pledgeForm" class="row g-2 mb-4">
-                        <div class="col-sm-4">
+                        <div class="col-12 col-sm-4">
                             <input type="text" id="authorInput" class="form-control rounded-3 py-2" placeholder="Seu nome (ou apelido)" required maxlength="30">
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-12 col-sm-6">
                             <input type="text" id="messageInput" class="form-control rounded-3 py-2" placeholder="Ex: Que nossa amizade continue no Ensino Médio!" required maxlength="140">
                         </div>
-                        <div class="col-sm-2 d-grid">
-                            <button type="submit" class="btn btn-navy py-2">
-                                <i class="bi bi-send-fill"></i>
+                        <div class="col-12 col-sm-2 d-grid">
+                            <button type="submit" class="btn btn-navy py-2" aria-label="Enviar compromisso">
+                                <i class="bi bi-send-fill me-1 d-sm-none"></i><span class="d-sm-none">Enviar</span>
+                                <i class="bi bi-send-fill d-none d-sm-inline"></i>
                             </button>
                         </div>
                     </form>
@@ -665,15 +643,15 @@
     </main>
 
     <!-- Rodapé -->
-    <footer class="py-4 text-center site-footer" style="color: var(--text-muted);">
+    <footer class="py-4 px-3 text-center site-footer" style="color: var(--text-muted);">
         <div class="container">
-            <p class="mb-1 fw-semibold" style="color: var(--text-dark);">“Sede perfeitamente unidos, num mesmo espírito e num mesmo parecer.” (1 Cor 1, 10)</p>
+            <p class="mb-1 fw-semibold small" style="color: var(--text-dark);">“Sede perfeitamente unidos, num mesmo espírito e num mesmo parecer.” (1 Cor 1, 10)</p>
             <small>Preparado com carinho para a pregação de formatura do 9º Ano • Viagem ao NR</small>
         </div>
     </footer>
 
     <!-- Toast de Feedback (Substitui qualquer alert) -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="max-width: 100vw;">
         <div id="liveToast" class="toast align-items-center text-bg-dark border border-warning border-opacity-50 rounded-4 shadow" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body d-flex align-items-center gap-2" id="toastMessage">
@@ -690,6 +668,18 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Fechar menu mobile automaticamente ao clicar em um link de navegação
+            const navbarCollapseEl = document.getElementById('navbarNav');
+            const navLinks = document.querySelectorAll('#navbarNav .nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navbarCollapseEl.classList.contains('show')) {
+                        const bsNavCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapseEl);
+                        bsNavCollapse.hide();
+                    }
+                });
+            });
+
             // Inicialização do Toast do Bootstrap
             const toastEl = document.getElementById('liveToast');
             const toastBody = document.getElementById('toastMessage');
@@ -807,14 +797,14 @@
                     const card = document.createElement('div');
                     card.className = 'pledge-card';
                     card.innerHTML = `
-                        <div class="d-flex justify-content-between align-items-start gap-2">
-                            <div>
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start gap-2">
+                            <div class="text-break">
                                 <span class="fw-bold d-block" style="color: var(--text-dark);">
                                     <i class="bi bi-person-heart text-warning me-1"></i>${escapeHTML(item.author)}
                                 </span>
                                 <p class="mb-1 small mt-1" style="color: var(--text-muted);">${escapeHTML(item.message)}</p>
                             </div>
-                            <span class="badge bg-dark text-warning border border-warning border-opacity-25">${escapeHTML(item.tag || 'União')}</span>
+                            <span class="badge bg-dark text-warning border border-warning border-opacity-25 flex-shrink-0">${escapeHTML(item.tag || 'União')}</span>
                         </div>
                     `;
                     pledgeList.appendChild(card);
