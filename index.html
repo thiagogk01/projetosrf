@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidos no Mesmo Espírito • Formatura 9º Ano NR</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Lora (para citações bíblicas) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Tema Escuro como Padrão */
+        :root,
+        [data-bs-theme="dark"] {
+            --primary-navy: #e2e8f0;
+            --primary-navy-light: #93c5fd;
+            --accent-gold: #eab308;
+            --accent-gold-soft: rgba(234, 179, 8, 0.12);
+            --bg-cream: #0b1120;
+            --text-dark: #f1f5f9;
+            --text-muted: #94a3b8;
+            --card-bg: #151e32;
+            --card-border: rgba(148, 163, 184, 0.14);
+            --scripture-box-end: #19243b;
+            --scripture-quote: #fef08a;
+            --callout-blue-bg: rgba(56, 189, 248, 0.1);
+            --callout-gold-bg: rgba(234, 179, 8, 0.1);
+            --accordion-bg: #182238;
+            --accordion-active-bg: #1f2c47;
+            --step-badge-bg: #3b82f6;
+            --pledge-bg: #1a253c;
+            --input-bg: #0f172a;
+            --footer-bg: #080d19;
+            --reading-bg: #070b14;
+            --reading-text: #f8fafc;
+        }
+
+        /* Tema Claro Opcional */
+        [data-bs-theme="light"] {
+            --primary-navy: #14284b;
+            --primary-navy-light: #1e3a6e;
+            --accent-gold: #d49b35;
+            --accent-gold-soft: #fdf6e7;
+            --bg-cream: #f8f9fc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+            --card-border: rgba(20, 40, 75, 0.08);
+            --scripture-box-end: #fffcf5;
+            --scripture-quote: #14284b;
+            --callout-blue-bg: #f4f7fc;
+            --callout-gold-bg: #fdf8ee;
+            --accordion-bg: #ffffff;
+            --accordion-active-bg: #f2f5fb;
+            --step-badge-bg: #14284b;
+            --pledge-bg: #ffffff;
+            --input-bg: #ffffff;
+            --footer-bg: #ffffff;
+            --reading-bg: #ffffff;
+            --reading-text: #0f172a;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .navbar-brand {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .scripture-font {
+            font-family: 'Lora', serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(11, 17, 32, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(234, 179, 8, 0.22);
+        }
+
+        .badge-gold {
+            background-color: rgba(234, 179, 8, 0.16);
+            color: #fde047;
+            border: 1px solid rgba(234, 179, 8, 0.38);
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #070c18 0%, #112244 55%, #193261 100%);
+            color: #ffffff;
+            padding: 6.5rem 0 5rem;
+            position: relative;
+            border-bottom: 1px solid rgba(234, 179, 8, 0.18);
+            border-bottom-left-radius: 2.5rem;
+            border-bottom-right-radius: 2.5rem;
+            box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.55);
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 340px;
+            height: 340px;
+            background: radial-gradient(circle, rgba(234, 179, 8, 0.2) 0%, rgba(234, 179, 8, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Cards & UI Elements */
+        .custom-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 1.5rem;
+            box-shadow: 0 12px 32px -6px rgba(0, 0, 0, 0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.3s ease;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 38px -6px rgba(0, 0, 0, 0.45);
+        }
+
+        .scripture-box {
+            background: linear-gradient(to right, var(--accent-gold-soft), var(--scripture-box-end));
+            border-left: 5px solid var(--accent-gold);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .scripture-text {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 1.32rem;
+            color: var(--scripture-quote);
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        .callout-blue {
+            background-color: var(--callout-blue-bg);
+            border: 1px solid rgba(56, 189, 248, 0.18);
+        }
+
+        .callout-gold {
+            background-color: var(--callout-gold-bg);
+            border: 1px solid rgba(234, 179, 8, 0.2);
+        }
+
+        .btn-gold {
+            background-color: #eab308;
+            color: #0f172a;
+            font-weight: 700;
+            border: none;
+            border-radius: 0.85rem;
+            padding: 0.65rem 1.35rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-gold:hover {
+            background-color: #facc15;
+            color: #0f172a;
+            transform: translateY(-1px);
+        }
+
+        .btn-navy {
+            background-color: #2563eb;
+            color: #ffffff;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.85rem;
+            padding: 0.65rem 1.35rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-navy:hover {
+            background-color: #3b82f6;
+            color: #ffffff;
+        }
+
+        /* Accordion / Roteiro de Pregação */
+        .accordion-item {
+            border: 1px solid var(--card-border) !important;
+            border-radius: 1.15rem !important;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            background-color: var(--accordion-bg);
+        }
+
+        .accordion-button {
+            font-weight: 700;
+            color: var(--text-dark);
+            background-color: var(--accordion-bg);
+            padding: 1.2rem 1.4rem;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: var(--accordion-active-bg);
+            color: #fde047;
+            box-shadow: none;
+        }
+
+        [data-bs-theme="light"] .accordion-button:not(.collapsed) {
+            color: #14284b;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: rgba(234, 179, 8, 0.5);
+        }
+
+        .script-quote-box {
+            background-color: rgba(15, 23, 42, 0.55);
+            color: #e2e8f0;
+        }
+
+        [data-bs-theme="light"] .script-quote-box {
+            background-color: #f8fafc;
+            color: #334155;
+        }
+
+        .step-badge {
+            width: 34px;
+            height: 34px;
+            background-color: var(--step-badge-bg);
+            color: #ffffff;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        /* Mural de Compromissos */
+        .pledge-card {
+            background: var(--pledge-bg);
+            border: 1px solid rgba(234, 179, 8, 0.25);
+            border-radius: 1.1rem;
+            padding: 1.15rem;
+            position: relative;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        #pledgeForm .form-control {
+            background-color: var(--input-bg);
+            border-color: var(--card-border);
+            color: var(--text-dark);
+        }
+
+        #pledgeForm .form-control:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 0.2rem rgba(234, 179, 8, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .toast-container {
+            z-index: 1080;
+        }
+
+        .prayer-card {
+            background: linear-gradient(145deg, #0d1930 0%, #182c52 100%);
+            border: 1px solid rgba(234, 179, 8, 0.25);
+            color: #ffffff;
+            border-radius: 1.75rem;
+        }
+
+        .site-footer {
+            background-color: var(--footer-bg);
+            border-top: 1px solid var(--card-border);
+        }
+
+        /* Modo de Leitura (facilita ler pelo celular na hora de falar) */
+        body.reading-mode {
+            background-color: var(--reading-bg);
+        }
+
+        body.reading-mode .hero-section {
+            padding: 5.5rem 0 3.25rem;
+            border-radius: 0;
+        }
+
+        body.reading-mode .scripture-text {
+            font-size: 1.55rem;
+            line-height: 1.75;
+        }
+
+        body.reading-mode .reflection-text {
+            font-size: 1.2rem;
+            line-height: 1.85;
+            color: var(--reading-text) !important;
+        }
+
+        body.reading-mode .custom-card {
+            box-shadow: none;
+            border: 1px solid rgba(234, 179, 8, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Navegação Fixa -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-compass-fill text-warning fs-4"></i>
+                <span>9º Ano no NR • <span class="fw-normal text-white-50">Partilha & Fé</span></span>
+            </a>
+            
+            <div class="d-flex align-items-center gap-2 order-lg-3">
+                <button id="readingModeBtn" class="btn btn-sm btn-outline-warning rounded-pill px-3 py-2 d-flex align-items-center gap-2" title="Amplia as letras e abre todas as etapas do roteiro para ler no celular">
+                    <i class="bi bi-book"></i>
+                    <span>Modo de Leitura</span>
+                </button>
+                <button id="themeToggleBtn" class="btn btn-sm btn-outline-light rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;" title="Alternar entre Modo Escuro e Modo Claro" aria-label="Alternar tema">
+                    <i class="bi bi-sun-fill text-warning"></i>
+                </button>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
+                <ul class="navbar-nav ms-auto me-lg-3 gap-lg-3 mt-3 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#passagens">As Passagens</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#roteiro">Roteiro da Partilha</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#oracao">Oração Final</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#mural">Mural da Turma</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-glow"></div>
+        <div class="container position-relative">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="badge badge-gold rounded-pill px-3 py-2 mb-3">
+                        <i class="bi bi-stars me-1"></i> Viagem de Formatura • Encerramento do Ensino Fundamental
+                    </span>
+                    <h1 class="display-5 fw-extrabold mb-3">
+                        Mais do que uma despedida: uma aliança que fica para a vida inteira.
+                    </h1>
+                    <p class="lead text-white-50 mb-4">
+                        Estamos no NR celebrando o fim do 9º ano. Para muitos, este é o último ano na mesma escola — mas para Deus, nenhuma amizade verdadeira tem prazo de validade quando somos unidos num só coração.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#passagens" class="btn btn-gold btn-lg shadow-sm">
+                            <i class="bi bi-book-half me-2"></i>Ler Reflexões Bíblicas
+                        </a>
+                        <a href="#roteiro" class="btn btn-outline-light btn-lg rounded-4">
+                            <i class="bi bi-mic-fill me-2"></i>Ver Roteiro Pronto para Falar
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="bg-white bg-opacity-10 border border-white border-opacity-25 rounded-4 p-4">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="bg-warning text-dark rounded-3 p-2 px-3 fw-bold">
+                                <i class="bi bi-lightbulb-fill fs-5"></i>
+                            </div>
+                            <h5 class="mb-0 text-white">Guia Rápido da Partilha</h5>
+                        </div>
+                        <ul class="list-unstyled text-white-50 small mb-0 d-flex flex-column gap-2">
+                            <li><i class="bi bi-check-circle-fill text-warning me-2"></i>Textos fiéis à <strong class="text-white">Bíblia Católica (Ave Maria)</strong></li>
+                            <li><i class="bi bi-check-circle-fill text-warning me-2"></i>Linguagem jovem, sincera e acolhedora</li>
+                            <li><i class="bi bi-check-circle-fill text-warning me-2"></i>Roteiro prático, dinâmica em grupo e mural para a turma</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção Principal: As Duas Passagens Bíblicas e Reflexões -->
+    <main class="container my-5 pt-3">
+        
+        <section id="passagens" class="mb-5">
+            <div class="text-center max-w-75 mx-auto mb-5">
+                <span class="text-uppercase fw-bold small" style="color: var(--accent-gold); letter-spacing: 0.1em;">A Palavra de Deus para Nós</span>
+                <h2 class="h1 mt-1" style="color: var(--primary-navy);">Duas Chaves para Viver o Fim do 9º Ano</h2>
+                <p class="mx-auto" style="max-width: 680px; color: var(--text-muted);">
+                    Cada passagem ilumina um lado especial desse momento: a alegria de estarmos juntos aqui e agora no NR, e o chamado para não deixarmos divisões ou a distância apagarem nossa história.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Card 1: Salmos 132:1 -->
+                <div class="col-lg-6">
+                    <div class="custom-card h-100 p-4 p-md-5 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge rounded-pill px-3 py-2" style="background-color: rgba(59, 130, 246, 0.18); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.3);">
+                                <i class="bi bi-bookmark-heart-fill me-1"></i> 1ª Passagem • A Alegria do Encontro
+                            </span>
+                            <button class="btn btn-sm btn-outline-secondary rounded-3 copy-btn" data-copy="Salmos 132,1 (Bíblia Ave Maria): &quot;Oh! Como é bom, como é agradável para irmãos unidos viverem juntos!&quot;">
+                                <i class="bi bi-clipboard me-1"></i> Copiar
+                            </button>
+                        </div>
+
+                        <h3 class="h4 mb-3" style="color: var(--primary-navy);">Salmos 132, 1</h3>
+
+                        <div class="scripture-box mb-4">
+                            <p class="scripture-text mb-1">
+                                “Oh! Como é bom, como é agradável para irmãos unidos viverem juntos!”
+                            </p>
+                            <small style="color: var(--text-muted);" class="fw-semibold">— Bíblia Sagrada (Edição Ave Maria)</small>
+                        </div>
+
+                        <div class="reflection-text flex-grow-1" style="color: var(--text-muted);">
+                            <h5 class="fw-bold mb-2" style="color: var(--text-dark);">O que isso fala para a nossa turma hoje?</h5>
+                            <p>
+                                Olhem ao redor neste acampamento. Durante anos, a gente dividiu a mesma sala, as mesmas provas difíceis, as risadas no intervalo e até os estresses do dia a dia. Muitas vezes, na correria da escola, a gente entra no piloto automático e esquece de agradecer pelas pessoas que caminham do nosso lado.
+                            </p>
+                            <p>
+                                O Salmo 132 era um <strong style="color: var(--text-dark);">“cântico das subidas”</strong>: os peregrinos cantavam essa frase quando caminhavam juntos rumo a Jerusalém. A viagem de formatura no NR é a nossa peregrinação de celebração! O salmista não diz apenas que é “legal” estar junto — ele usa duas palavras fortes: <strong style="color: var(--text-dark);">bom</strong> (faz bem para a alma) e <strong style="color: var(--text-dark);">agradável</strong> (traz alegria verdadeira).
+                            </p>
+                            <div class="p-3 rounded-4 mt-3 callout-blue">
+                                <p class="mb-0 small" style="color: var(--text-dark);">
+                                    <strong><i class="bi bi-sparkles text-warning me-1"></i> Aplicação prática:</strong> Aproveitem cada minuto dessa viagem sem ficar presos só nas "panelinhas" ou no celular. Olhem nos olhos uns dos outros. Se este pode ser o último ano de alguns na escola, façam desta semana a melhor lembrança da nossa história.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: 1 Coríntios 1:10 -->
+                <div class="col-lg-6">
+                    <div class="custom-card h-100 p-4 p-md-5 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge rounded-pill px-3 py-2" style="background-color: rgba(234, 179, 8, 0.16); color: #fde047; border: 1px solid rgba(234, 179, 8, 0.32);">
+                                <i class="bi bi-people-fill me-1"></i> 2ª Passagem • Superar Divisões e Seguir Unidos
+                            </span>
+                            <button class="btn btn-sm btn-outline-secondary rounded-3 copy-btn" data-copy="1 Coríntios 1,10 (Bíblia Ave Maria): &quot;Rogo-vos, irmãos, em nome de nosso Senhor Jesus Cristo, que todos estejais em pleno acordo, e que não haja entre vós divisões; mas sede perfeitamente unidos, num mesmo espírito e num mesmo parecer.&quot;">
+                                <i class="bi bi-clipboard me-1"></i> Copiar
+                            </button>
+                        </div>
+
+                        <h3 class="h4 mb-3" style="color: var(--primary-navy);">1 Coríntios 1, 10</h3>
+
+                        <div class="scripture-box mb-4">
+                            <p class="scripture-text mb-1">
+                                “Rogo-vos, irmãos, em nome de nosso Senhor Jesus Cristo, que todos estejais em pleno acordo, e que não haja entre vós divisões; mas sede perfeitamente unidos, num mesmo espírito e num mesmo parecer.”
+                            </p>
+                            <small style="color: var(--text-muted);" class="fw-semibold">— Bíblia Sagrada (Edição Ave Maria)</small>
+                        </div>
+
+                        <div class="reflection-text flex-grow-1" style="color: var(--text-muted);">
+                            <h5 class="fw-bold mb-2" style="color: var(--text-dark);">Como vencer as divisões antes do Ensino Médio?</h5>
+                            <p>
+                                São Paulo escreveu essa carta para uma comunidade onde cada um queria puxar para um lado, criando grupinhos fechados e mágoas bobas. No 9º ano, a gente sabe que isso também acontece: fofocas, mal-entendidos ou gente que mal se fala mesmo estudando na mesma sala há anos.
+                            </p>
+                            <p>
+                                Paulo faz um apelo urgente: <em>“que não haja entre vós divisões”</em>. Estar <strong style="color: var(--text-dark);">“num mesmo espírito”</strong> não significa sermos todos iguais ou gostarmos das mesmas coisas — significa ter respeito, perdão e maturidade para não deixar nenhuma pendência aberta quando esse ciclo fechar.
+                            </p>
+                            <div class="p-3 rounded-4 mt-3 callout-gold">
+                                <p class="mb-0 small" style="color: var(--text-dark);">
+                                    <strong><i class="bi bi-heart-fill text-danger me-1"></i> Desafio de encerramento:</strong> Ano que vem, alguns vão para outras escolas, outras cidades ou turmas diferentes. Não deixem uma briga pequena virar um adeus definitivo. Peça desculpas se precisar, abrace quem você nunca conversou direito e leve paz no coração.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 2: Roteiro Interativo Pronto para a Pregação -->
+        <section id="roteiro" class="mb-5 pt-4">
+            <div class="custom-card p-4 p-md-5">
+                <div class="row align-items-center mb-4">
+                    <div class="col-md-8">
+                        <span class="text-uppercase fw-bold small" style="color: var(--accent-gold); letter-spacing: 0.1em;">Passo a Passo para Falar</span>
+                        <h2 class="h2 mt-1 mb-2" style="color: var(--primary-navy);">Roteiro Completo da Sua Pregação (8 a 12 min)</h2>
+                        <p class="mb-0" style="color: var(--text-muted);">
+                            Abra cada etapa na hora em que for falar com a turma. Você pode ler diretamente ou usar como guia para falar com suas próprias palavras.
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <span class="badge bg-dark text-light border border-secondary px-3 py-2 rounded-3">
+                            <i class="bi bi-clock me-1 text-warning"></i> Tempo ideal: ~10 minutos
+                        </span>
+                    </div>
+                </div>
+
+                <div class="accordion" id="preachingAccordion">
+                    <!-- Etapa 1 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#step1" aria-expanded="true">
+                                <span class="step-badge">1</span>
+                                <span>Abertura: Quebrando o Gelo e Reconhecendo o Momento (2 min)</span>
+                            </button>
+                        </h2>
+                        <div id="step1" class="accordion-collapse collapse show" data-bs-parent="#preachingAccordion">
+                            <div class="accordion-body reflection-text" style="color: var(--text-muted);">
+                                <p class="fw-semibold" style="color: var(--text-dark);">O que dizer:</p>
+                                <p class="fst-italic p-3 rounded-3 border-start border-4 border-primary script-quote-box">
+                                    “Gente, antes de qualquer coisa, olhem para o rosto de quem está sentado aí do seu lado. A gente passou o ano inteiro esperando por essa viagem para o NR, contando os dias para sair da rotina da escola. Só que, no meio de toda essa festa, tem uma ficha que está começando a cair: o 9º ano está acabando. Para alguns de nós, esses são os últimos meses na mesma escola. Ano que vem, cada um pode seguir um caminho diferente no Ensino Médio. Por isso, eu quis trazer duas passagens da Bíblia que resumem exatamente o que Deus espera da gente agora.”
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 2 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step2">
+                                <span class="step-badge">2</span>
+                                <span>1ª Leitura: Salmos 132, 1 — Valorizar o Presente (3 min)</span>
+                            </button>
+                        </h2>
+                        <div id="step2" class="accordion-collapse collapse" data-bs-parent="#preachingAccordion">
+                            <div class="accordion-body reflection-text" style="color: var(--text-muted);">
+                                <p class="fw-semibold" style="color: var(--text-dark);">Leia com calma o versículo:</p>
+                                <p class="fw-bold text-info">“Oh! Como é bom, como é agradável para irmãos unidos viverem juntos!” (Salmos 132, 1)</p>
+                                <p class="fw-semibold" style="color: var(--text-dark);">Explique para a turma:</p>
+                                <p class="fst-italic p-3 rounded-3 border-start border-4 border-warning script-quote-box">
+                                    “Esse salmo era cantado por pessoas que viajavam juntas em grupo. E olha que incrível: nós estamos numa viagem juntos! Muitas vezes a gente só dá valor para a turma depois que vai embora e sente saudade. Deus está dizendo hoje: não espere sentir saudade para valorizar quem está com você. Viva essa viagem ao máximo, ria junto, inclua quem às vezes fica mais quieto no canto, porque estar unido como irmãos é um presente de Deus.”
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 3 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step3">
+                                <span class="step-badge">3</span>
+                                <span>2ª Leitura: 1 Coríntios 1, 10 — Curar Divisões e Levar a União Adiante (3 min)</span>
+                            </button>
+                        </h2>
+                        <div id="step3" class="accordion-collapse collapse" data-bs-parent="#preachingAccordion">
+                            <div class="accordion-body reflection-text" style="color: var(--text-muted);">
+                                <p class="fw-semibold" style="color: var(--text-dark);">Leia com firmeza e carinho:</p>
+                                <p class="fw-bold text-info">“Rogo-vos, irmãos, em nome de nosso Senhor Jesus Cristo, que todos estejais em pleno acordo, e que não haja entre vós divisões; mas sede perfeitamente unidos, num mesmo espírito e num mesmo parecer.” (1 Coríntios 1, 10)</p>
+                                <p class="fw-semibold" style="color: var(--text-dark);">Explique para a turma:</p>
+                                <p class="fst-italic p-3 rounded-3 border-start border-4 border-primary script-quote-box">
+                                    “São Paulo faz um pedido muito sincero: ‘que não haja entre vós divisões’. A gente sabe que ao longo do ano rolam panelinhas, fofocas, desentendimentos e até gente que se afastou sem motivo. Mas fechar um ciclo na escola com o coração pesado não vale a pena. Estar ‘num mesmo espírito’ significa que, mesmo se a gente mudar de escola ou de turma ano que vem, a nossa base de amizade e respeito continua firme. Se tiver alguém aqui com quem você se afastou, usa essa viagem para recomeçar.”
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 4 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step4">
+                                <span class="step-badge" style="background-color: #eab308; color: #0f172a;">4</span>
+                                <span>Dinâmica Rápida de União: “O Sinal da Aliança” (2 min)</span>
+                            </button>
+                        </h2>
+                        <div id="step4" class="accordion-collapse collapse" data-bs-parent="#preachingAccordion">
+                            <div class="accordion-body reflection-text" style="color: var(--text-muted);">
+                                <p class="fw-semibold" style="color: var(--text-dark);">Como conduzir com a turma (muito simples e marcante):</p>
+                                <ol class="mb-0">
+                                    <li class="mb-2">Peça para todos ficarem de pé e formarem um único círculo, colocando a mão no ombro do colega da direita e da esquerda.</li>
+                                    <li class="mb-2">Diga: <em style="color: var(--text-dark);">“Olhem para esse círculo. Não tem começo nem fim, e ninguém está de fora. É assim que Deus vê a nossa turma.”</em></li>
+                                    <li>Peça para cada um olhar para duas pessoas no círculo e fazer um gesto de paz ou um sorriso sincero antes de rezarem juntos a Oração Final abaixo.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 3: Oração Final + Mural Interativo de Compromissos -->
+        <div class="row g-4 mb-5">
+            <!-- Oração Final -->
+            <div class="col-lg-5" id="oracao">
+                <div class="prayer-card h-100 p-4 p-md-5 d-flex flex-column justify-content-between shadow">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <span class="badge badge-gold rounded-pill px-3 py-2">
+                                <i class="bi bi-hands-praying me-1"></i> Encerramento
+                            </span>
+                            <button class="btn btn-sm btn-outline-light rounded-3 copy-btn" data-copy="Senhor Jesus, muito obrigado por cada pessoa que faz parte da nossa história neste 9º ano. Obrigado por esta viagem ao NR e por todas as risadas, aprendizados e desafios que vivemos juntos. Como diz a Tua Palavra, como é bom e agradável vivermos unidos como irmãos! Pedimos perdão por todas as vezes em que deixamos o orgulho, as fofocas ou as divisões nos afastarem. Abençoa o futuro de cada um de nós no Ensino Médio: mesmo que nossos caminhos tomem direções diferentes, conserva-nos perfeitamente unidos no mesmo espírito, na amizade verdadeira e no Teu amor. Por Cristo, nosso Senhor. Amém!">
+                                <i class="bi bi-clipboard me-1"></i> Copiar Oração
+                            </button>
+                        </div>
+
+                        <h3 class="h3 mb-3 text-white">Oração de Encerramento da Turma</h3>
+                        <p class="scripture-font text-light opacity-75 fst-italic" style="font-size: 1.12rem; line-height: 1.8;">
+                            “Senhor Jesus, muito obrigado por cada pessoa que faz parte da nossa história neste 9º ano. Obrigado por esta viagem ao NR e por todas as risadas, aprendizados e desafios que vivemos juntos.
+                            <br><br>
+                            Como diz a Tua Palavra, como é bom e agradável vivermos unidos como irmãos! Pedimos perdão por todas as vezes em que deixamos o orgulho, as fofocas ou as divisões nos afastarem.
+                            <br><br>
+                            Abençoa o futuro de cada um de nós no Ensino Médio: mesmo que nossos caminhos tomem direções diferentes, conserva-nos perfeitamente unidos no mesmo espírito, na amizade verdadeira e no Teu amor. Por Cristo, nosso Senhor. Amém!”
+                        </p>
+                    </div>
+
+                    <div class="pt-3 border-top border-white border-opacity-10 mt-3">
+                        <small class="text-warning"><i class="bi bi-info-circle me-1"></i> Dica: Podem finalizar rezando um Pai-Nosso e uma Ave-Maria de mãos dadas.</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mural Interativo da Turma -->
+            <div class="col-lg-7" id="mural">
+                <div class="custom-card h-100 p-4 p-md-5">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                        <div>
+                            <span class="text-uppercase fw-bold small" style="color: var(--accent-gold); letter-spacing: 0.1em;">Interação com a Turma</span>
+                            <h3 class="h3 mb-0" style="color: var(--primary-navy);">Mural de Compromissos e Intenções</h3>
+                        </div>
+                        <button id="inspireBtn" class="btn btn-sm btn-outline-info rounded-3">
+                            <i class="bi bi-magic me-1"></i> Gerar Ideia de Compromisso
+                        </button>
+                    </div>
+                    <p class="small mb-4" style="color: var(--text-muted);">
+                        Antes ou depois da pregação, passe o celular para os colegas escreverem uma mensagem de união, um pedido de oração ou uma lembrança do 9º ano (fica salvo automaticamente no navegador).
+                    </p>
+
+                    <!-- Formulário para adicionar intenção -->
+                    <form id="pledgeForm" class="row g-2 mb-4">
+                        <div class="col-sm-4">
+                            <input type="text" id="authorInput" class="form-control rounded-3 py-2" placeholder="Seu nome (ou apelido)" required maxlength="30">
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="messageInput" class="form-control rounded-3 py-2" placeholder="Ex: Que nossa amizade continue no Ensino Médio!" required maxlength="140">
+                        </div>
+                        <div class="col-sm-2 d-grid">
+                            <button type="submit" class="btn btn-navy py-2">
+                                <i class="bi bi-send-fill"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Lista de Mensagens -->
+                    <div id="pledgeList" class="d-flex flex-column gap-3" style="max-height: 360px; overflow-y: auto; padding-right: 4px;">
+                        <!-- Cards gerados via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="py-4 text-center site-footer" style="color: var(--text-muted);">
+        <div class="container">
+            <p class="mb-1 fw-semibold" style="color: var(--text-dark);">“Sede perfeitamente unidos, num mesmo espírito e num mesmo parecer.” (1 Cor 1, 10)</p>
+            <small>Preparado com carinho para a pregação de formatura do 9º Ano • Viagem ao NR</small>
+        </div>
+    </footer>
+
+    <!-- Toast de Feedback (Substitui qualquer alert) -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast align-items-center text-bg-dark border border-warning border-opacity-50 rounded-4 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body d-flex align-items-center gap-2" id="toastMessage">
+                    <i class="bi bi-check-circle-fill text-warning"></i>
+                    <span>Texto copiado!</span>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Fechar"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicialização do Toast do Bootstrap
+            const toastEl = document.getElementById('liveToast');
+            const toastBody = document.getElementById('toastMessage');
+            const toast = new bootstrap.Toast(toastEl, { delay: 2800 });
+
+            function showFeedback(message) {
+                toastBody.innerHTML = `<i class="bi bi-check-circle-fill text-warning"></i><span>${message}</span>`;
+                toast.show();
+            }
+
+            // 1. Alternar Tema Escuro (padrão) / Claro
+            const themeToggleBtn = document.getElementById('themeToggleBtn');
+            const htmlEl = document.documentElement;
+
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = htmlEl.getAttribute('data-bs-theme') || 'dark';
+                const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                htmlEl.setAttribute('data-bs-theme', nextTheme);
+
+                if (nextTheme === 'dark') {
+                    themeToggleBtn.innerHTML = `<i class="bi bi-sun-fill text-warning"></i>`;
+                    showFeedback('Modo Escuro ativado.');
+                } else {
+                    themeToggleBtn.innerHTML = `<i class="bi bi-moon-stars-fill text-info"></i>`;
+                    showFeedback('Modo Claro ativado.');
+                }
+            });
+
+            // 2. Copiar Passagens e Oração para o WhatsApp/Notas
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            copyButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const textToCopy = btn.getAttribute('data-copy');
+                    const tempTextArea = document.createElement('textarea');
+                    tempTextArea.value = textToCopy;
+                    document.body.appendChild(tempTextArea);
+                    tempTextArea.select();
+                    try {
+                        document.execCommand('copy');
+                        showFeedback('Copiado! Pronto para colar no WhatsApp ou nas suas notas.');
+                    } catch (err) {
+                        showFeedback('Não foi possível copiar automaticamente.');
+                    }
+                    document.body.removeChild(tempTextArea);
+                });
+            });
+
+            // 3. Alternar Modo de Leitura (aumenta fontes e abre todo o roteiro)
+            const readingModeBtn = document.getElementById('readingModeBtn');
+            let isReadingMode = false;
+
+            readingModeBtn.addEventListener('click', () => {
+                isReadingMode = !isReadingMode;
+                document.body.classList.toggle('reading-mode', isReadingMode);
+
+                const collapses = document.querySelectorAll('#preachingAccordion .accordion-collapse');
+                if (isReadingMode) {
+                    readingModeBtn.classList.remove('btn-outline-warning');
+                    readingModeBtn.classList.add('btn-warning', 'text-dark', 'fw-semibold');
+                    readingModeBtn.innerHTML = `<i class="bi bi-eye-fill"></i><span>Sair da Leitura</span>`;
+                    
+                    collapses.forEach(el => {
+                        const bsCollapse = bootstrap.Collapse.getOrCreateInstance(el, { toggle: false });
+                        bsCollapse.show();
+                    });
+                    showFeedback('Modo de Leitura ativado: letras ampliadas e roteiro aberto!');
+                } else {
+                    readingModeBtn.classList.add('btn-outline-warning');
+                    readingModeBtn.classList.remove('btn-warning', 'text-dark', 'fw-semibold');
+                    readingModeBtn.innerHTML = `<i class="bi bi-book"></i><span>Modo de Leitura</span>`;
+                    showFeedback('Modo de Leitura desativado.');
+                }
+            });
+
+            // 4. Gerador de Sugestões de Compromisso + Mural da Turma com LocalStorage
+            const presetIdeas = [
+                "Prometo não deixar a mudança de escola apagar as amizades que construí aqui.",
+                "Quero aproveitar essa viagem ao NR sem exclusões e conversando com todo mundo da sala!",
+                "Rezo para que Deus abençoe cada colega no Ensino Médio e nos mantenha unidos na fé.",
+                "Deixo para trás qualquer briga boba deste ano e levo só as melhores lembranças do 9º ano.",
+                "Mesmo em salas ou escolas diferentes, continuaremos sendo uma só família!"
+            ];
+
+            const inspireBtn = document.getElementById('inspireBtn');
+            const messageInput = document.getElementById('messageInput');
+            const authorInput = document.getElementById('authorInput');
+            const pledgeForm = document.getElementById('pledgeForm');
+            const pledgeList = document.getElementById('pledgeList');
+
+            inspireBtn.addEventListener('click', () => {
+                const randomIdea = presetIdeas[Math.floor(Math.random() * presetIdeas.length)];
+                messageInput.value = randomIdea;
+                messageInput.focus();
+            });
+
+            // Dados iniciais caso o mural esteja vazio
+            const defaultPledges = [
+                {
+                    author: "Coordenação da Partilha",
+                    message: "Que este tempo no NR sele nossa amizade com a paz de Cristo, mesmo para quem vai mudar de escola ano que vem!",
+                    tag: "1 Cor 1, 10"
+                },
+                {
+                    author: "Turma do 9º Ano",
+                    message: "Obrigado por cada risada, trabalho em grupo e apoio durante todo o Ensino Fundamental. Unidos sempre!",
+                    tag: "Salmos 132, 1"
+                }
+            ];
+
+            let pledges = JSON.parse(localStorage.getItem('nr9ano_pledges')) || defaultPledges;
+
+            function renderPledges() {
+                pledgeList.innerHTML = '';
+                pledges.forEach((item) => {
+                    const card = document.createElement('div');
+                    card.className = 'pledge-card';
+                    card.innerHTML = `
+                        <div class="d-flex justify-content-between align-items-start gap-2">
+                            <div>
+                                <span class="fw-bold d-block" style="color: var(--text-dark);">
+                                    <i class="bi bi-person-heart text-warning me-1"></i>${escapeHTML(item.author)}
+                                </span>
+                                <p class="mb-1 small mt-1" style="color: var(--text-muted);">${escapeHTML(item.message)}</p>
+                            </div>
+                            <span class="badge bg-dark text-warning border border-warning border-opacity-25">${escapeHTML(item.tag || 'União')}</span>
+                        </div>
+                    `;
+                    pledgeList.appendChild(card);
+                });
+            }
+
+            function escapeHTML(str) {
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            }
+
+            pledgeForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const author = authorInput.value.trim();
+                const message = messageInput.value.trim();
+
+                if (author && message) {
+                    pledges.unshift({
+                        author,
+                        message,
+                        tag: "9º Ano NR"
+                    });
+                    localStorage.setItem('nr9ano_pledges', JSON.stringify(pledges));
+                    renderPledges();
+                    authorInput.value = '';
+                    messageInput.value = '';
+                    showFeedback('Seu compromisso de união foi adicionado ao mural da turma!');
+                }
+            });
+
+            renderPledges();
+        });
+    </script>
+</body>
+</html>
